@@ -5,13 +5,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
 
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public ModelAndView testPage() {
+        ModelAndView mav = new ModelAndView("test");
+        return mav;
+    }
+
     @RequestMapping(value = "/dataSend",method = RequestMethod.POST)
     public String dataSend(Model model, MessageDTO dto){
-        model.addAttribute("msg",dto.getResult()+"/ 서버에서 붙여준 값입니다");
+        model.addAttribute("msg",dto.getResult()+"/ this is the value sent by the server ");
         return "index :: #resultDiv";
     }
 
