@@ -10,12 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public ModelAndView testPage() {
-        ModelAndView mav = new ModelAndView("test");
-        return mav;
-    }
-
     @RequestMapping(value = "/dataSend",method = RequestMethod.POST)
     public String dataSend(Model model, MessageDTO dto){
         model.addAttribute("msg",dto.getResult()+"/ this is the value sent by the server ");
